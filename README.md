@@ -48,7 +48,7 @@ Desarrollar un modelo de regresión capaz de predecir los minutos de retraso de 
 Se puede probar el modelo enviando un `POST` a:
 
 ```bash
-http://34.:201.50.77:8000/predict
+http://34.201.50.77:8000/predict
 ```
 
 Ejemplo con requests en Python:
@@ -92,4 +92,36 @@ response = requests.post(url, json=data)
 print("Status code:", response.status_code)
 print("Predicción:", response.json())
 ```
+
+### 🏠 Ejecución Local
+
+Si prefieres ejecutar la API localmente, simplemente instala las dependencias y ejecuta el servidor FastAPI en tu máquina:
+
+1. Clona el repositorio:
+```bash
+git clone  https://github.com/j4carlos/delay_predict_API.git
+cd delay_predict_API
+```
+
+2. Instala las dependencias
+```bash
+pip install -r requirements.txt
+```
+ 3. Ejecuta FastAPI
+```bash
+uvicorn app:app --host 0.0.0.0 --port 8000
+```
+
+La API estara disponible en htttp://127.0.0.1:8000/predict
+
+## 📊 Resultados del Modelo
+
+- **RMSE:** 2.73 minutos
+- **MAE:** 0.96 minutos
+- **Feature mas importante** Departure Delay
+
+## Mejoras futuras:
+- Contrastar resultados contra algun otro modelo, 
+- revisar resultados con mas parametros
+- agregar una funcion para que permita la carga de datos categoricos en formato no codificado cuando se realice una solicitud.
 
